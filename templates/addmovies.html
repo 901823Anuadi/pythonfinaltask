@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% load static %}
+{% block title %}
+Movie Review Site
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <br>
+    <div class="card" style="background-color:FFE5E5;">
+        <div class="card-body">
+            <h3 class="text-center">{{controller}}</h3>
+            <form action="" method="POST" >
+                {% csrf_token %}
+                {{ form|crispy}}
+                <input type="submit" value="{{controller}}" class="btn btn-danger">
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

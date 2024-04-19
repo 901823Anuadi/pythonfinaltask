@@ -1,0 +1,25 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <meta name="Description" content="">
+    <script src="https://kit.fontawesome.com/928bab6617.js" crossorigin="anonymous"></script>
+    <title>{% block title %} {% endblock %}</title>
+</head>
+<body style="background:#FEECE2">
+    <div class="container">
+        {% include 'header.html' %}
+        <div>
+            {% include 'nav.html' %}
+        </div>
+        {% block content %}
+
+        {% endblock %}
+    </div>
+    {% include 'footer.html' %}
+    <script src="{% static 'js/popper.min.js' %}" ></script>
+    <script src="{% static 'js/bootstrap.min.js' %}" ></script>
+</body>
+</html>

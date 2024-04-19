@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Movie Review Site
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <br>
+    <div class="card" id="backdrop" style="background:#FEECE2">
+        <div class="card-body">
+            <div class="row">
+              {% for movie in page_obj.object_list %}
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="text-center">
+                                <img src="{{movie.image}}" alt="" class="img-fluid" style="width:220px;height:250px;">
+                                 <h3 class="text-center">{{movie.name}}</h3>
+                                 <i>{{movie.release_date}}</i>
+                                 <a href="{% url 'movieapp:detail' movie.id %}">Read more</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+<center>
+        {%if page_obj.has_previous %} {# whether the previous page exists #}
+            <a href="?page={{page_obj.previous_page_number}}"><</a> {# link to the prev page #}
+        {% endif %}
+        <span>{{page_obj.number}}</span> {# the current page number #}
+
+        {%if page_obj.has_next %} {# whether the next page exists #}
+            <a href="?page={{page_obj.next_page_number}}">></a> {# link to the next page #}
+        {% endif %}
+</center>
+{% endblock %}
